@@ -1,0 +1,27 @@
+version: "3"
+services:
+  web:
+    build: .
+    expose:
+      - "8000"
+    volumes:
+      - .:/hellas
+      - /tmp/logs:/tmp
+    command: bash start.sh
+    restart: always
+
+  nginx:
+    build: docker-utils/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    expose:
+      - "8000"
+    volumes:
+      - ./static:/usr/share/nginx/html/static # 挂载静态文件
+      - ./static/media:/usr/share/nginx/html/media # 挂载上传文件
+    links:
+      - web
+    depends_on:
+      - web
+    restart: always

@@ -26,6 +26,7 @@ class Article(models.Model):
     create_time = models.DateTimeField(default=timezone.now, verbose_name='发布时间')
     number = models.IntegerField(verbose_name='阅读量')
     like_numbers = models.IntegerField(default=0, null=False, verbose_name='点赞量')
+    image = models.ImageField(upload_to='blog', null=True, verbose_name='文章封面图片, 350*232.97px')
     sort = models.ForeignKey(Sort, to_field='id', on_delete=models.CASCADE, verbose_name='分类外键',  db_constraint=False)
     user = models.ForeignKey(User, to_field='id', on_delete=models.CASCADE, verbose_name='用户外键',  db_constraint=False)
 

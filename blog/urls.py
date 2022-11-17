@@ -20,6 +20,6 @@ urlpatterns = [
     # 慢生活
     re_path('^life/$', life.Life.as_view(), name='life/'),
     # 文章详情页 (?P<id>\d+)
-    re_path('^info/$', info.Info.as_view(), name='info/'),
+    re_path('^info/(?P<id>\d+)/$', info.Info.as_view(), name='info/'),
 
 ]

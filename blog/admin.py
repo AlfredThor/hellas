@@ -6,22 +6,60 @@ from mdeditor.widgets import MDEditorWidget
 
 class Article_Admin(admin.ModelAdmin):
     # order_by
-    ordering = ['create_time']
+    ordering = ['id']
     # 分页
     list_per_page = 20
     # 显示的字段
     list_display = [
-        'id', 'title', 'intro', 'content_text', 'create_time', 'number', 'like_number'
+        'id', 'title', 'intro', 'image', 'content_text', 'create_time', 'number', 'like_number'
     ]
     formfield_overrides = {
         models.TextField: {'widget': MDEditorWidget}
     }
 
-    # 多对多关系的展示
-    # def show_all_sort(self, obj):
-    #     return [a.name for a in obj.sort.all()]
-    #
-    # filter_horizontal = ['sort']
-
-
 admin.site.register(blog_model.Article, Article_Admin)
+
+
+class Sort_Admin(admin.ModelAdmin):
+    ordering = ['id']
+    list_per_page = 30
+    list_display = [
+        'id', 'name'
+    ]
+
+admin.site.register(blog_model.Sort, Sort_Admin)
+
+
+class Ip_Admin(admin.ModelAdmin):
+    ordering = ['id']
+    list_per_page = 30
+    list_display = [
+        'id', 'ip', 'count', 'visit_time', 'location'
+    ]
+
+admin.site.register(blog_model.Ip, Ip_Admin)
+
+
+class Site_Admin(admin.ModelAdmin):
+    ordering = ['id']
+    list_per_page = 30
+    list_display = [
+        'id', 'name', 'site', 'remark','create_time'
+    ]
+
+admin.site.register(blog_model.Friend_site, Site_Admin)
+
+
+# class MoreInfo(admin.TabularInline): #横向显示
+#     model=blog_model.Article
+
+
+class Like_Admin(admin.ModelAdmin):
+    ordering = ['id']
+    list_per_page = 30
+    list_display = [
+        'id', 'create_time'
+    ]
+    # inlines = [MoreInfo]
+
+admin.site.register(blog_model.Like_number, Like_Admin)

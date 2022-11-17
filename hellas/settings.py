@@ -35,9 +35,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ckeditor',
-    'ckeditor_uploader',
+    # 'django_filters',
     'blog',
+    'mdeditor',
 ]
 
 MIDDLEWARE = [
@@ -140,10 +140,14 @@ CKEDITOR_CONFIGS = {
 }
 
 MEDIA_URL = '/media/'
-# 放在django项目根目录，同时也需要创建media文件夹
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
-CKEDITOR_UPLOAD_PATH = 'upload/'
 
 # 允许前端JS跨域
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'None'
+
+SECURE_CONTENT_TYPE_NOSNIFF = False
+#
+# # import mimetypes
+# # mimetypes.add_type('text/css', '.css')
+# # mimetypes.add_type('application/javascript', '.js')

@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django_filters',
     'blog',
     'mdeditor',
 ]
@@ -130,18 +129,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-# 富文本编辑器ckeditor相关配置
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-        'height': 300,
-        'width': 1200,
-    }
-}
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
+# 线上收集静态文件的目录
+# STATIC_ROOT = os.path.join(BASE_DIR,'statics')
 
 # 允许前端JS跨域
 SECURE_CROSS_ORIGIN_OPENER_POLICY = 'None'

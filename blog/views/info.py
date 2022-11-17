@@ -4,6 +4,7 @@ from django.views.generic import DetailView
 from blog.models import Article
 import markdown
 
+
 # class Info(View):
 #
 #     def get(self, *args, **kwargs):
@@ -26,25 +27,27 @@ class Info(DetailView):
             'markdown.extensions.codehilite',
             # # 自动生成目录
             'markdown.extensions.toc',
-            'markdown.extensions.extra',
-            'markdown.extensions.abbr',
-            'markdown.extensions.attr_list',
-            'markdown.extensions.def_list',
-            'markdown.extensions.fenced_code',
-            'markdown.extensions.footnotes',
-            'markdown.extensions.md_in_html',
-            'markdown.extensions.tables',
-            'markdown.extensions.admonition',
-            'markdown.extensions.codehilite',
-            'markdown.extensions.legacy_attrs',
-            'markdown.extensions.legacy_em',
-            'markdown.extensions.meta',
-            'markdown.extensions.nl2br',
-            'markdown.extensions.sane_lists',
-            'markdown.extensions.smarty',
-            'markdown.extensions.toc',
-            'markdown.extensions.wikilinks'
+            # 'markdown.extensions.extra',
+            # 'markdown.extensions.abbr',
+            # 'markdown.extensions.attr_list',
+            # 'markdown.extensions.def_list',
+            # 'markdown.extensions.fenced_code',
+            # 'markdown.extensions.footnotes',
+            # 'markdown.extensions.md_in_html',
+            # 'markdown.extensions.tables',
+            # 'markdown.extensions.admonition',
+            # 'markdown.extensions.codehilite',
+            # 'markdown.extensions.legacy_attrs',
+            # 'markdown.extensions.legacy_em',
+            # 'markdown.extensions.meta',
+            # 'markdown.extensions.nl2br',
+            # 'markdown.extensions.sane_lists',
+            # 'markdown.extensions.smarty',
+            # 'markdown.extensions.toc',
+            # 'markdown.extensions.wikilinks'
         ]
-        article_obj.content = markdown.markdown(article_obj.content_text.replace("\r\n", '  \n'), extensions=extensions, safe_mode=True, enable_attributes=False)
+        article_obj.content = markdown.markdown(
+            article_obj.content_text.replace("\r\n", '  \n'
+        ), extensions=extensions, safe_mode=True, enable_attributes=False)
         content['article'] = article_obj
         return content

@@ -5,7 +5,7 @@ from blog.models import Article
 class Time(ListView):
 
     model = Article
-    paginate_by = 200
+    paginate_by = 15
     context_object_name = 'result'
     ordering = 'id'
     page_kwarg = 'page'

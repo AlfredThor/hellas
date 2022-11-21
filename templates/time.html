@@ -39,6 +39,41 @@
             {% endfor %}
         </ul>
     </div>
+
+    <nav aria-label="Page navigation" class="container">
+        <ul class="pagination">
+            <li>
+                <a href="javascript:void(0)" aria-label="Previous">
+                    <span aria-hidden="true">共&nbsp;{{ page_obj.paginator.num_pages }}&nbsp;页</span>
+                </a>
+            </li>
+            {% if page_obj.has_previous %}
+                <li>
+                    <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}&name={{ search.name }}" aria-label="Previous">
+                        <span aria-hidden="true">上一页</span>
+                    </a>
+                </li>
+            {% endif %}
+            {% for num in page_obj.paginator.page_range %}
+                <li>
+                    <a href="{{ request.path }}?page={{ num }}&name={{ search.name }}">{{ num }}</a>
+                </li>
+            {% endfor %}
+            {% if page_obj.has_next %}
+                <li>
+                    <a href="{{ request.path }}?page={{ page_obj.next_page_number }}&name={{ search.name }}" aria-label="Next">
+                        <span aria-hidden="true">下一页</span>
+                    </a>
+                </li>
+            {% endif %}
+            <li>
+                <a href="javascript:void(0)" aria-label="Next">
+                    <span aria-hidden="true">当前显示第&nbsp;{{ page_obj.number }}&nbsp;页</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
 {% endblock %}
 
 

@@ -11,10 +11,10 @@
 
 {% block css %}
     <link href="{% static 'css/base.css' %}" rel="stylesheet">
-    <link href="{% static 'css/md.css' %}" rel="stylesheet">
+{#    <link href="{% static 'css/md.css' %}" rel="stylesheet">#}
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
     <link href="{% static 'css/info.css' %}" rel="stylesheet">
-    <link href="{% static 'css/m.css' %}" rel="stylesheet">
+    <link href="{% static 'css/monokai.css' %}" rel="stylesheet">
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/jquery.easyfader.min.js' %}"></script>
     <script src="{% static 'js/hc-sticky.js' %}"></script>
@@ -43,8 +43,8 @@
                     <strong>简介</strong>
                     {{ article.intro }}
                 </div>
-                <div class="news_con">
-                    {{ article.content | safe }}
+                <div>
+                    {{ article.content_text | safe }}
                 </div>
             </div>
             <div class="share">
@@ -54,7 +54,7 @@
                     </a>(
                     <b id="diggnum">
                         <script type="text/javascript" src="#"></script>
-                        13
+                        {{ article.like_numbers }}
                     </b>)
                 </p>
             </div>
@@ -77,8 +77,9 @@
     <footer>
         <p>
             Design by
-            <a href="http://120.79.138.248" target="_blank">Hella个人博客</a>
-            <a href="/">蜀ICP备11002373号-1</a>
+            <a href="https://www.thornasa.com/">Hella个人博客</a>
+            <a href="http://beian.miit.gov.cn/" target="_blank">粤ICP备2023002639号</a>
+            <a href="/" class="links">友情链接</a>
         </p>
     </footer>
     <a href="#" class="cd-top">Top</a>

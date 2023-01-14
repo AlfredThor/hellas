@@ -17,9 +17,11 @@ services:
       - "443:443"
     expose:
       - "8000"
+      - "443"
     volumes:
       - ./static:/usr/share/nginx/html/static # 挂载静态文件
       - ./static/media:/usr/share/nginx/html/media # 挂载上传文件
+      - ./docker-utils/nginx/file:/usr/share/nginx/ssl
     links:
       - web
     depends_on:
